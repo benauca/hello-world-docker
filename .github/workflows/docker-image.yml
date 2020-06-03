@@ -19,8 +19,8 @@ jobs:
     - name: push image
       uses: docker/build-push-action@v1
       with:
-        username: ${{secrets.bnauk_user}}
-        password: ${{secrets.bnauk_token}}
+        username: ${{ github.actor }}
+        password: ${{secrets.GITHUB_TOKEN}}
         registry: docker.pkg.github.com
         repository: ${{ github.repository }}/hello-world
         tag_with_ref: true
