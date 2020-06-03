@@ -16,3 +16,11 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: push image
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{secrets.bnauk_user}}
+        password: ${{secrets.bnauk_token}}
+        registry: docker.pkg.github.com
+        repository: ${{ github.repository }}/hello-world
+        tag_with_ref: true
